@@ -3,7 +3,7 @@
 import { Disposer, h } from '../lib/dom';
 import { createSurface, invalidator, linScale } from '../lib/canvas';
 import { Tooltip, drawAxes, label, ringDot } from '../lib/chart';
-import { loadHR, HRSample } from '../lib/data';
+import { loadHR, loadStars, HRSample } from '../lib/data';
 import { isLight, onThemeChange, palette } from '../lib/theme';
 import { button, panel, readout, toggle } from '../lib/ui';
 import { fixed, sig } from '../lib/format';
@@ -313,12 +313,10 @@ export function mount(root: HTMLElement, ctx: PlateContext): () => void {
     if (sel.name) info.append(h('div', { class: 'btn-row', style: { marginTop: '12px' } }, button('Find in the sky', () => goSky(sel!.name))));
   }
   function goSky(name: string): void {
-    import('../lib/data').then(({ loadStars }) =>
-      loadStars().then((s) => {
-        const i = s.name.indexOf(name);
-        navigate('sky', i >= 0 ? { focus: `star:${i}` } : {});
-      }),
-    );
+    loadStars().then((s) => {
+      const i = s.name.indexOf(name);
+      navigate('sky', i >= 0 ? { focus: `star:${i}` } : {});
+    });
   }
   showInfo();
   d.add(onThemeChange(redraw));
