@@ -1,0 +1,24 @@
+{
+  "name": "astrum",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Astrum: an interactive visual atlas of astrophysics",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "data": "node scripts/build-data.mjs"
+  },
+  "dependencies": {
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.180.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.8",
+    "vitest": "^5.1.0"
+  }
+}
