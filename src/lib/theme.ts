@@ -20,6 +20,8 @@ export function initTheme(): void {
   matchMedia('(prefers-color-scheme: light)').addEventListener('change', notify);
   // The host page (or another script) may set data-theme itself.
   new MutationObserver(notify).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  // Canvases drawn before the web fonts arrive used fallback faces; redraw them once fonts are ready.
+  document.fonts?.ready.then(notify).catch(() => {});
 }
 
 export function currentChoice(): ThemeChoice {
