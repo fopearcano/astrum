@@ -4,6 +4,11 @@ import { defineConfig } from 'vite';
 // (GitHub Pages project sites, static hosts, or a local file server).
 export default defineConfig({
   base: './',
+  // Fixed dev-server port; fail clearly instead of drifting to another port if it is taken.
+  server: {
+    port: 5120,
+    strictPort: true,
+  },
   build: {
     target: 'es2022',
     chunkSizeWarningLimit: 900,

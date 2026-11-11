@@ -40,7 +40,7 @@ npm install
 npm run dev
 ```
 
-Then open the printed local address. Other scripts:
+Then open http://localhost:5120 (the port is set in `vite.config.ts`). Other scripts:
 
 | Command | Does |
 | --- | --- |
